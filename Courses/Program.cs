@@ -8,12 +8,17 @@ namespace Courses
     {
         static void Main(string[] args)
         {
+            Console.Write("Как Вас зовут: ");
+            string name = Console.ReadLine();
+
+            Console.Write("Сколько у Вас средств: ");
+            int balance = Int32.Parse(Console.ReadLine());
+
+            Console.Write("Сколько Вы уже потратили в нашем магазине: ");
+            int spent = Int32.Parse(Console.ReadLine());
             Console.WindowWidth = 63;
-            User user = new User(
-                "Никита",
-                10000,
-                650
-                );
+            User user = new User(name, balance, spent);
+
             Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine("Список курсов: ");
             Console.ResetColor();
@@ -43,11 +48,20 @@ namespace Courses
                 );
             itl.InfoCourse(itl);
 
+            China china = new China(
+                "Последователь Мулан",
+                "Хаоями Мияноки",
+                "Китайский",
+                1000
+                );
+            china.InfoCourse(china);
+
             Course[] courses = new Course[]
             {
                 eng,
                 ger,
-                itl
+                itl,
+                china
             };
             Informer informer = new Informer();
 
@@ -70,7 +84,6 @@ namespace Courses
                     {
                         informer.Buy(user, courses[productNumber]);
                         Bye();
-                        //break;
                     }
                     else
                     {
